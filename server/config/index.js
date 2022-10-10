@@ -1,23 +1,45 @@
-// We reuse this import in order to have access to the `body` property in requests
 const express = require("express");
-
-// ℹ️ Responsible for the messages you see in the terminal as requests are coming in
-// https://www.npmjs.com/package/morgan
 const logger = require("morgan");
-
-// ℹ️ Needed when we deal with cookies (we will when dealing with authentication)
-// https://www.npmjs.com/package/cookie-parser
-const cookieParser = require("cookie-parser");
-
-// ℹ️ Needed to accept from requests from 'the outside'. CORS stands for cross origin resource sharing
-// unless the request if from the same domain, by default express wont accept POST requests
 const cors = require("cors");
+const MongoStore = require("connect-mongo");
+const passport = require("passport");
+const session = require("express-session");
+const User = require("../models/User.model");
 
 // Middleware configuration
 module.exports = (app) => {
   // Because this is a server that will accept requests from outside and it will be hosted ona server with a `proxy`, express needs to know that it should trust that setting.
   // Services like heroku use something called a proxy and you need to add this to your server
   app.set("trust proxy", 1);
+
+  app.use(
+    session({
+      saveUninitialized: false,
+      resave: true,
+      secret: "secret",
+      // https://github.com/jdesboeufs/connect-mongo/blob/HEAD/MIGRATION_V4.md
+      store: MongoStore.create({
+        mongoUrl: process.env.MONGODB_URI || "mongodb://localhost/back-office",
+      }),
+      cookie: {
+        secure: process.env.NODE_ENV === "develop" ? false : true,
+        maxAge:
+          process.env.NODE_ENV === "develop" ? null : 30 * 24 * 60 * 60 * 1000,
+        sameSite: "strict", // prevent csrf attack @see https://auth0.com/blog/cross-site-request-forgery-csrf/
+      },
+    })
+  );
+
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+  passport.serializeUser((userData, done) => done(null, userData._id));
+
+  passport.deserializeUser((userId, done) => {
+    User.findById(userId)
+      .then((data) => done(null, data))
+      .catch((err) => done(err));
+  });
 
   // controls a very specific header to pass headers from the frontend
   app.use(
