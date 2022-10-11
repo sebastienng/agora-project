@@ -1,0 +1,46 @@
+.home-page-display {
+  margin-top: 92px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  line-height: 20px;
+}
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5625rem;
+}
+img {
+  width: 100px;
+}
+.catch-phrases {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+span {
+  color: #737370;
+}
+p {
+  font-size: 26px;
+  line-height: 30px;
+}
+
+.auth-links-button {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1.0625rem;
+}
+
+h1 {
+  color: #f2ba57;
+  font-family: "Kannada MN";
+  font-style: normal;
+  font-size: 36px;
+  line-height: 20px;
+}
