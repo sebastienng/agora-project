@@ -21,11 +21,11 @@ function HomePage() {
       </div>
 
       <div className="auth-links-button">
-        <Link to={PATHS.SIGNUPPAGE} className="agora-button">
-          Signup
+        <Link to={PATHS.LOGINPAGE} className="agora-button ">
+          Log in
         </Link>
-        <Link to={PATHS.LOGINPAGE} className="agora-button empty">
-          Log In
+        <Link to={PATHS.SIGNUPPAGE} className="agora-button empty">
+          Sign in
         </Link>
       </div>
     </div>
