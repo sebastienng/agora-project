@@ -4,11 +4,28 @@ import { useNavigate } from "react-router-dom";
 import "./auth.css";
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
-import StepOneIdentifier from '../components/SignInSteps/StepOneIdentifier'
+import StepOneIdentifier from "../components/SignInSteps/StepOneIdentifier";
 
 export default function Signup({ authenticate }) {
-  const [steps, setSteps] = useState(1); 
-  const [signUpData, setSignUpData] = useState(); 
+  const initSignUpData = {
+    firstname: "",
+    lastname: "",
+    password: "",
+    email: "",
+    type: "", // ["BUSINESS", "FREELANCE"]
+    jobs: {
+      category: "",
+      title: "",
+      skills: [],
+      experience: 0,
+    },
+    language: [],
+    description: "",
+    location: "",
+  };
+
+  const [steps, setSteps] = useState(1);
+  const [signUpData, setSignUpData] = useState(initSignUpData);
 
   // const [form, setForm] = useState({
   //   username: "",
@@ -46,7 +63,7 @@ export default function Signup({ authenticate }) {
 
   return (
     <div>
-      {steps === 1 ? <StepOneIdentifier/> : null }
+      {steps === 1 ? <StepOneIdentifier setSignUpData={setSignUpData} /> : null}
 
       {/* <form onSubmit={handleFormSubmission} className="auth__form">
         <label htmlFor="input-username">Username</label>
