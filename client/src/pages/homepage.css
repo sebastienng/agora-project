@@ -1,12 +1,12 @@
 .home-page-display {
-  margin-top: 92px;
+  padding-top: 5.75rem;
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
   justify-content: center;
   gap: 2.5rem;
-  line-height: 20px;
+  line-height: 1.25rem;
 }
 header {
   display: flex;
@@ -14,7 +14,7 @@ header {
   gap: 1.5625rem;
 }
 img {
-  width: 100px;
+  width: 6.25rem;
 }
 .catch-phrases {
   display: flex;
@@ -23,11 +23,11 @@ img {
 }
 
 span {
-  color: #737370;
+  color: var(--description-color);
 }
 p {
-  font-size: 26px;
-  line-height: 30px;
+  font-size: var(--title-font-size);
+  line-height: 1.87rem;
 }
 
 .auth-links-button {
@@ -41,6 +41,6 @@ h1 {
   color: #f2ba57;
   font-family: "Kannada MN";
   font-style: normal;
-  font-size: 36px;
-  line-height: 20px;
+  font-size: var(--big-logo-font-size);
+  line-height: 1.25rem;
 }

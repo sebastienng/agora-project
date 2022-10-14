@@ -5,7 +5,6 @@ import company from "../../images/company.svg";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-
 function StepOneIdentifier({ setSignUpData }) {
   const buttonHandler = (title) => {
     setSignUpData((prevState) => {
