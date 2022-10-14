@@ -2,8 +2,7 @@ import "./StepOneIdentifier.css";
 import StepOneButton from "./StepOneButton";
 import freelance from "../../images/freelance.svg";
 import company from "../../images/company.svg";
-import { useFormik } from "formik";
-import * as Yup from "yup";
+
 
 
 function StepOneIdentifier({ setSignUpData }) {
