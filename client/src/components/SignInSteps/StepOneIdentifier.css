@@ -1,17 +1,16 @@
-.stepOneContainer{
+.stepOneContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
+
   background: var(--background);
   padding-top: 5.68rem;
 }
-.stepOneContainer h2{
+.stepOneContainer h2 {
   font-size: var(--title-font-size);
   margin-bottom: 5rem;
 }
-.buttonContainer{
+.buttonContainer {
   display: flex;
   flex-direction: column;
   gap: 3.37rem;

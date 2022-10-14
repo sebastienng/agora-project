@@ -1,0 +1,18 @@
+.job-category-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+
+  width: 19.3125rem;
+  height: 5.3125rem;
+  background-color: var(--card-background);
+  border: solid 1px var(--text-color);
+  border-radius: 15px;
+}
+
+.job-category-box span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

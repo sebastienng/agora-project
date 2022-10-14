@@ -11,6 +11,9 @@ export default function Signup({ authenticate }) {
   const [steps, setSteps] = useState(1);
 
   return (
+      {steps === 3 ? (
+        <Step title={"What's your job category ?"} currentStep={steps} />
+      ) : null}
     <div>
       {/* Charlotte changed the step order(1 and 2 ) , so we have change those comoents names later */}
       {steps === 1 ? <StepTwo setSteps={setSteps} /> : null}
