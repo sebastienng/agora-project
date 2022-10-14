@@ -5,6 +5,7 @@ import "./auth.css";
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
 import StepOneIdentifier from "../components/SignInSteps/StepOneIdentifier";
+import Step from "../components/SignInSteps/Step";
 
 export default function Signup({ authenticate }) {
   const initSignUpData = {
@@ -24,7 +25,7 @@ export default function Signup({ authenticate }) {
     location: "",
   };
 
-  const [steps, setSteps] = useState(1);
+  const [steps, setSteps] = useState(3);
   const [signUpData, setSignUpData] = useState(initSignUpData);
 
   // const [form, setForm] = useState({
@@ -38,28 +39,30 @@ export default function Signup({ authenticate }) {
   function handleFormSubmission(event) {
     event.preventDefault();
     const credentials = {
-      username,
-      password,
+      // username,
+      // password,
     };
     signup(credentials).then((res) => {
       if (!res.status) {
         // unsuccessful signup
         console.error("Signup was unsuccessful: ", res);
-        return setError({
-          message: "Signup was unsuccessful! Please check the console.",
-        });
+        // return setError({
+        //   message: "Signup was unsuccessful! Please check the console.",
+        // });
       }
       // successful signup
       USER_HELPERS.setUserToken(res.data.accessToken);
       authenticate(res.data.user);
-      navigate(PATHS.HOMEPAGE);
+      //navigate(PATHS.HOMEPAGE);
     });
   }
 
   return (
-    <div>
+    <div className="sign-up-steps">
       {steps === 1 ? <StepOneIdentifier setSignUpData={setSignUpData} /> : null}
-
+      {steps === 3 ? (
+        <Step title={"What's your job category ?"} currentStep={steps} />
+      ) : null}
       {/* <form onSubmit={handleFormSubmission} className="auth__form">
         <label htmlFor="input-username">Username</label>
         <input
@@ -94,7 +97,7 @@ export default function Signup({ authenticate }) {
         <button className="button__submit" type="submit">
           Submit
         </button>
-      </form>
+      </form>*/}
     </div>
   );
 }
