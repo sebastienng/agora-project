@@ -8,11 +8,11 @@ export default function StepTwoInput({
   description,
 }) {
   return (
-    <>
+    <div key={id}>
       <label htmlFor={id}>{placeHolder ? placeHolder : description}</label>
       <Field type={type} id={id} name={name} placeholder={placeHolder} />
       <ErrorMessage name={name}>{(msg) => <div>{msg}</div>}</ErrorMessage>
       {/* error message have to change in validateSchema with correspond field name */}
-    </>
+    </div>
   );
 }
