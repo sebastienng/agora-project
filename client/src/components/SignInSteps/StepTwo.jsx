@@ -1,12 +1,13 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
 import React from "react";
 import { Link } from "react-router-dom";
+import { Formik, Form} from "formik";
 import * as Yup from "yup";
 
+import './StepTwo.css'
 import StepTwoInput from "./StepTwoInput";
 
 function StepTwo({ setSteps }) {
-  
+
   const initialValues = {
     firstName: "",
     lastName: "",
@@ -76,7 +77,8 @@ function StepTwo({ setSteps }) {
   ];
 
   return (
-    <div>
+    <div className="registration">
+      <h1> Register to Agora </h1>
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
@@ -87,16 +89,17 @@ function StepTwo({ setSteps }) {
             {formFields.map((fields) => {
               return StepTwoInput(fields);
             })}
-
-            <button type="submit"> Sign up </button>
+            <button className="button-submit" type="submit">
+              Sign up
+            </button>
           </Form>
         )}
       </Formik>
       <p>
         By signing up you agree with our <span>Terms of Use</span> and
-        <span>Privacy Policy</span> .
+        <span> Privacy Policy</span> .
       </p>
-      <button>Login With LinkedIn </button>
+      <button className="button-linkedIn">Login With LinkedIn </button>
     </div>
   );
 }
