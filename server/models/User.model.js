@@ -13,10 +13,6 @@ const userSchema = new Schema(
     lastname: String,
     password: String,
     email: String,
-    type: {
-      type: String,
-      enum: ["BUSINESS", "FREELANCE"],
-    },
     jobs: [userJobSchema],
     language: [String],
     description: String,
