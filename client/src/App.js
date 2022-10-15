@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import LoadingComponent from "./components/Loading";
 import Navbar from "./components/Navbar/Navbar";
@@ -50,13 +51,15 @@ export default function App() {
     return <LoadingComponent />;
   }
   return (
-    <div className="App">
-      <Navbar handleLogout={handleLogout} user={user} />
-      <Routes>
-        {routes({ user, authenticate, handleLogout }).map((route) => (
-          <Route key={route.path} path={route.path} element={route.element} />
-        ))}
-      </Routes>
-    </div>
+    <main>
+      <div className="App">
+        {/* <Navbar handleLogout={handleLogout} user={user} /> */}
+        <Routes>
+          {routes({ user, authenticate, handleLogout }).map((route) => (
+            <Route key={route.path} path={route.path} element={route.element} />
+          ))}
+        </Routes>
+      </div>
+    </main>
   );
 }
