@@ -1,19 +1,17 @@
 const { Schema, model } = require("mongoose");
 
-const userJobSchema = new Schema({
-  category: String,
-  title: String,
-  skills: [String],
-  experience: String,
-});
-
 const userSchema = new Schema(
   {
     firstname: String,
     lastname: String,
     password: String,
     email: String,
-    jobs: [userJobSchema],
+    jobs: {
+      category: String,
+      title: String,
+      skills: [String],
+      experience: String,
+    },
     language: [String],
     description: String,
     location: String,
