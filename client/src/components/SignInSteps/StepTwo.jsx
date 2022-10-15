@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Formik, Form} from "formik";
-import * as Yup from "yup";
 
 import './StepTwo.css'
 import StepTwoInput from "./StepTwoInput";
+import signUpValidationShema from '../../config/signUpValidationSchema.js'
 
 function StepTwo({ setSteps }) {
 
@@ -27,21 +27,6 @@ function StepTwo({ setSteps }) {
     // Axios.patch(data)
     setSteps(2);
   };
-  const signUpShema = Yup.object().shape({
-    firstName: Yup.string()
-      .min(2, "Must be at least 2 characters")
-      .required("Required")
-      .max(15, "Must be 15 characters or less"),
-    lastName: Yup.string()
-      .min(2, "Must be at least 2 characters")
-      .required("Required")
-      .max(20, "Must be 20 characters or less"),
-    email: Yup.string().email("Invalid email address").required("Required"),
-    password: Yup.string()
-      .required("Required")
-      .min(8, "Must be more than 8 characters"),
-  });
-
   const formFields = [
     {
       type: "text",
@@ -82,7 +67,7 @@ function StepTwo({ setSteps }) {
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
-        validationSchema={signUpShema}
+        validationSchema={signUpValidationShema}
       >
         {() => (
           <Form>
