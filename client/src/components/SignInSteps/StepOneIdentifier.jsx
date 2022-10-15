@@ -3,16 +3,11 @@ import StepOneButton from "./StepOneButton";
 import freelance from "../../images/freelance.svg";
 import company from "../../images/company.svg";
 
-
-
-function StepOneIdentifier({ setSignUpData }) {
+function StepOneIdentifier({ setSteps }) {
   const buttonHandler = (title) => {
-    setSignUpData((prevState) => {
-      return {
-        ...prevState,
-        type: title.toUpperCase(),
-      };
-    });
+    const type = title.toUppercase();
+    // Axios.patch(type)
+    setSteps(3);
   };
 
   return (

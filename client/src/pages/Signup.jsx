@@ -9,33 +9,14 @@ import StepTwo from "../components/SignInSteps/StepTwo";
 // import * as PATHS from "../utils/paths";
 // import * as USER_HELPERS from "../utils/userToken";
 
-
 export default function Signup({ authenticate }) {
-  const initSignUpData = {
-    firstname: "",
-    lastname: "",
-    password: "",
-    email: "",
-    type: "",
-    jobs: {
-      category: "",
-      title: "",
-      skills: [],
-      experience: 0,
-    },
-    language: [],
-    description: "",
-    location: "",
-  };
-
   const [steps, setSteps] = useState(1);
-  const [signUpData, setSignUpData] = useState(initSignUpData);
-
 
   return (
     <div>
-      {steps === 1 ? <StepTwo /> : null}
-      {steps === 2 ? <StepOneIdentifier setSignUpData={setSignUpData} /> : null}
+      {/* Charlotte changed the step order(1 and 2 ) , so we have change those comoents names later */}
+      {steps === 1 ? <StepTwo setSteps={setSteps} /> : null}
+      {steps === 2 ? <StepOneIdentifier setSteps={setSteps} /> : null}
     </div>
   );
 }
