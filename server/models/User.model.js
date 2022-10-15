@@ -7,7 +7,7 @@ const userSchema = new Schema(
     password: String,
     email: String,
     type: String,
-    jobs: {
+    job: {
       category: String,
       title: String,
       skills: [String],

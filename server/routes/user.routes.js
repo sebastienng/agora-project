@@ -3,15 +3,13 @@ const Joi = require("joi");
 const authMiddleware = require("../middleware/auth.middleware");
 const User = require("../models/User.model");
 
-const userJobSchema = Joi.object({
-  category: Joi.string(),
-  title: Joi.string(),
-  skills: Joi.array().items(Joi.string()),
-  experience: Joi.string(),
-});
-
 const userSchemaValidation = Joi.object({
-  jobs: userJobSchema,
+  job: Joi.object({
+    category: Joi.string(),
+    title: Joi.string(),
+    skills: Joi.array().items(Joi.string()),
+    experience: Joi.string(),
+  }),
   language: Joi.array().items(Joi.string()),
   description: Joi.string(),
   location: Joi.string(),
