@@ -1,6 +1,7 @@
 import React from "react";
 import "./Step.css";
 import Three from "./StepThree/Three";
+import Four from "./StepFour/Four";
 
 const Step = ({ title, currentStep }) => {
   const paginationList = [0, 1, 2, 3, 4, 5, 6, 7];
@@ -13,7 +14,7 @@ const Step = ({ title, currentStep }) => {
       case 3:
         return <Three />;
       case 4:
-        return "Step 1";
+        return <Four />;
       default:
         return "This step does not exist.";
     }
@@ -29,7 +30,11 @@ const Step = ({ title, currentStep }) => {
         <button type="Submit" className="agora-button">
           Continue
         </button>
-        <span>Your job field isn’t listed here?</span>
+        {(currentStep === 3 || currentStep === 4) && (
+          <span>
+            Your job {currentStep === 3 ? "field" : "title"} isn’t listed here?
+          </span>
+        )}
         <ul>
           {paginationList.map((element) => {
             if (element === currentStep - 3) {

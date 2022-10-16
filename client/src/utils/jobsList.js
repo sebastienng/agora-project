@@ -6,7 +6,14 @@ export const jobList = [
   },
   {
     category: "Design",
-    jobs: ["UX Designer", "UI Designer", "UI Designer"],
+    jobs: [
+      "UI Designer",
+      "UX Designer",
+      "Art Director",
+      "Graphic Designer",
+      "Illustrator",
+      "Product Designer",
+    ],
   },
   {
     category: "Product Management",
