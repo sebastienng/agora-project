@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { Routes } from "react-router-dom";
+import { getUser } from "./api";
 import "./App.css";
 import LoadingComponent from "./components/Loading";
 import useAuth from "./config/hooks/useAuth";
@@ -11,6 +13,15 @@ function PrivateRoute({ children }) {
 }
 
 export default function App() {
+  let [auth, setAuth] = useAuth();
+
+  // Check if user has an active session on the server
+  useEffect(() => {
+    getUser()
+      .then(({ data }) => setAuth(data))
+      .catch(() => setAuth(false));
+  }, []);
+
   if (isLoading) {
     return <LoadingComponent />;
   }

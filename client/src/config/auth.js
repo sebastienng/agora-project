@@ -1,8 +1,7 @@
 import { createGlobalState } from "react-hooks-global-state";
-import { getUser } from "../api";
 
 const { useGlobalState } = createGlobalState({
-  auth: getUser(),
+  auth: false,
 });
 
 export const useAuthState = () => useGlobalState("auth");
