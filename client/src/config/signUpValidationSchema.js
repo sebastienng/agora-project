@@ -11,8 +11,7 @@ const signUpValidationShema = Yup.object().shape({
     .max(20, "Must be 20 characters or less"),
   email: Yup.string()
     .email("Invalid email address")
-    .required("Required")
-    .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g),
+    .required("Required"),
   password: Yup.string()
     .required("Required")
     .min(8, "Must be more than 8 characters")
