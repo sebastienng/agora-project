@@ -7,6 +7,7 @@
   color:var(--text-color);
   font-style: normal;
   font-family: "Kannada Sangam MN";
+  box-sizing: border-box;
 }
 .App {
   /* padding: 0 2.25rem; */
