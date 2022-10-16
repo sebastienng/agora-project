@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Formik, Form} from "formik";
+import { Formik, Form } from "formik";
 
-import './StepTwo.css'
+import "./StepTwo.css";
 import StepTwoInput from "./StepTwoInput";
-import signUpValidationShema from '../../config/signUpValidationSchema.js'
+import signUpValidationShema from "../../config/signUpValidationSchema.js";
 
 function StepTwo({ setSteps }) {
-
   const initialValues = {
     firstName: "",
     lastName: "",
@@ -80,11 +79,13 @@ function StepTwo({ setSteps }) {
           </Form>
         )}
       </Formik>
-      <p>
-        By signing up you agree with our <span>Terms of Use</span> and
-        <span> Privacy Policy</span> .
-      </p>
-      <button className="button-linkedIn">Login With LinkedIn </button>
+      <div className="policy">
+        <p>
+          By signing up you agree with our <span>Terms of Use</span> and
+          <span> Privacy Policy</span>.
+        </p>
+        <button className="button-linkedIn">Login With LinkedIn </button>
+      </div>
     </div>
   );
 }
