@@ -5,7 +5,7 @@ import company from "../../images/company.svg";
 
 function StepOneIdentifier({ setSteps }) {
   const buttonHandler = (title) => {
-    const type = title.toUppercase();
+    const type = title.toUpperCase();
     // Axios.patch(type)
     setSteps(3);
   };

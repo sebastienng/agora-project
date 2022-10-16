@@ -16,7 +16,12 @@ const signUpValidationShema = Yup.object().shape({
   password: Yup.string()
     .required("Required")
     .min(8, "Must be more than 8 characters")
-    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm),
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm, {
+      message: "Please create a strong password",
+    }),
+  // - at least 8 characters
+  // - must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number
+  // - Can contain special characters
 });
 
 export default signUpValidationShema;
