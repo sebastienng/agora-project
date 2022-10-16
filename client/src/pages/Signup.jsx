@@ -25,7 +25,7 @@ export default function Signup({ authenticate }) {
     location: "",
   };
 
-  const [steps, setSteps] = useState(3);
+  const [steps, setSteps] = useState(4);
   const [signUpData, setSignUpData] = useState(initSignUpData);
 
   // const [form, setForm] = useState({
@@ -62,6 +62,9 @@ export default function Signup({ authenticate }) {
       {steps === 1 ? <StepOneIdentifier setSignUpData={setSignUpData} /> : null}
       {steps === 3 ? (
         <Step title={"What's your job category ?"} currentStep={steps} />
+      ) : null}
+      {steps === 4 ? (
+        <Step title={"What’s your job title?"} currentStep={steps} />
       ) : null}
       {/* <form onSubmit={handleFormSubmission} className="auth__form">
         <label htmlFor="input-username">Username</label>
