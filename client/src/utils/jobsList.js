@@ -10,6 +10,6 @@ export const jobList = [
   },
   {
     category: "Product Management",
-    jobs: ["Product Owner", "Product Manager", "Scrum master"],
+    jobs: ["Product Owner", "Scrum master", "Scrum master"],
   },
 ];
