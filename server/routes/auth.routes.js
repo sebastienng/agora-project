@@ -10,6 +10,14 @@ const generatePassword = async (userPassword) => {
   return password;
 };
 
+router.get("/", async (req, res) => {
+  if (req.user) {
+    return res.json(user);
+  } else {
+    return res.status(400).json({ errorMessage: "User is not authentified." });
+  }
+});
+
 router.post("/signup", async (req, res) => {
   // Check if user already exist
   const exist = await User.findOne({ email: req.body.email });
