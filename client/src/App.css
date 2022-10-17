@@ -6,7 +6,7 @@
   line-height: 1.25rem;
   color:var(--text-color);
   font-style: normal;
-  font-family: "Kannada Sangam MN";
+  /* font-family: "Kannada Sangam MN"; */
   box-sizing: border-box;
 }
 .App {

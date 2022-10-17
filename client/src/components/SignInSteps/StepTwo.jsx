@@ -1,12 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import { Formik, Form } from "formik";
+import TermsOfUse from "../../components/TermsOfUse";
 
 import "./StepTwo.css";
 import StepTwoInput from "./StepTwoInput";
 import signUpValidationShema from "../../config/signUpValidationSchema.js";
 
 function StepTwo({ setSteps }) {
+  const [readTerms, setReadState] = useState(false);
+
   const initialValues = {
     firstName: "",
     lastName: "",
@@ -60,33 +62,58 @@ function StepTwo({ setSteps }) {
     },
   ];
 
+  const readTermsFn = () => {
+    setReadState(!readTerms);
+  };
+
   return (
-    <div className="registration">
-      <h1> Register to Agora </h1>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={onSubmit}
-        validationSchema={signUpValidationShema}
+    <>
+      <div
+        className="registration"
+        style={{ display: `${readTerms ? "none" : "flex"}` }}
       >
-        {() => (
-          <Form>
-            {formFields.map((fields) => {
-              return StepTwoInput(fields);
-            })}
-            <button className="button-submit" type="submit">
-              Sign up
-            </button>
-          </Form>
-        )}
-      </Formik>
-      <div className="policy">
-        <p>
-          By signing up you agree with our <span>Terms of Use</span> and
-          <span> Privacy Policy</span>.
-        </p>
-        <button className="button-linkedIn">Login With LinkedIn </button>
+        <h1> Register to Agora </h1>
+        <Formik
+          initialValues={initialValues}
+          onSubmit={onSubmit}
+          validationSchema={signUpValidationShema}
+        >
+          {() => (
+            <Form>
+              {formFields.map((fields) => {
+                return StepTwoInput(fields);
+              })}
+              <button className="button-submit" type="submit">
+                Sign up
+              </button>
+            </Form>
+          )}
+        </Formik>
+        <div className="registration-policy">
+          <p>
+            By signing up you agree with our&nbsp;
+            <span
+              onClick={() => {
+                readTermsFn();
+              }}
+            >
+              Terms of Use
+            </span>
+            &nbsp;and&nbsp;
+            <span
+              onClick={() => {
+                readTermsFn();
+              }}
+            >
+              Privacy Policy
+            </span>
+            .
+          </p>
+          <button className="button-linkedIn">Login With LinkedIn </button>
+        </div>
       </div>
-    </div>
+      {readTerms ? <TermsOfUse readTermsFn={readTermsFn} /> : null}
+    </>
   );
 }
 

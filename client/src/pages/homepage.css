@@ -8,36 +8,37 @@
   gap: 2.5rem;
   line-height: 1.25rem;
 }
-header {
+.home-page-display header {
   display: flex;
   flex-direction: column;
   gap: 1.5625rem;
 }
-img {
+.home-page-display img {
   width: 6.25rem;
 }
-.catch-phrases {
+.home-page-display .catch-phrases {
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
 }
 
-span {
+.home-page-display span {
   color: var(--description-color);
 }
-p {
+.home-page-display p {
   font-size: var(--title-font-size);
   line-height: 1.87rem;
+  max-width: 19.1rem;
 }
 
-.auth-links-button {
+.home-page-display .auth-links-button {
   display: flex;
   flex-direction: column;
 
   gap: 1.0625rem;
 }
 
-h1 {
+.home-page-display h1 {
   color: #f2ba57;
   font-family: "Kannada MN";
   font-style: normal;

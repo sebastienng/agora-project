@@ -15,11 +15,7 @@ export default function StepTwoInput({
       <Field type={type} id={id} name={name} placeholder={placeHolder} />
       <ErrorMessage component={ToolTip} name={name} />
         
-      {/* error message have to change in validateSchema with correspond field name */}
+      {/* if want change error message , go to config/validateSchema  */}
     </div>
   );
 }
-
-{/* <ErrorMessage component={ToolTip} name={name}>
-  {(msg) => <span>{msg}</span>}
-</ErrorMessage>; */}

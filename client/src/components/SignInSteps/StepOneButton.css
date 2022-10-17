@@ -1,7 +1,7 @@
 .stepOne-button {
   width: 17.1rem;
-  height: 9.8rem;
-  padding: 1.75rem 1.56rem 1.43rem 1.56rem;
+  height: 9.87rem;
+  padding: 1.75rem 0 1.43rem 0;
   background: var(--card-background);
   color: var(--text-color);
   border: 1px var(--text-color) solid;
@@ -10,12 +10,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap:1.1rem; 
+  gap:.75rem; 
   text-align: center;
 }
 .stepOne-button p {
   color: var(--description-color);
-  font-size: var(--description-font-size);
 }
 .stepOne-button h3 {
   font-size: var(--text-font-size);
