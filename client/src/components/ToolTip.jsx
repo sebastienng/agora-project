@@ -6,10 +6,11 @@ function ToolTip({ children }) {
       style={{
         width:'100%',
         fontSize: "0.93rem",
-        color: "--text-color",
         position: "absolute",
         top: "57px",
-        left: "24px",
+        left: "28px",
+        textAlign: 'left',
+        color:'red'
       }}
     >
       {children}

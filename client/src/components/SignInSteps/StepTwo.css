@@ -45,6 +45,12 @@
   border: var(--text-color) 1px solid;
   margin-top: 1rem;
 }
-.policy{
+.registration-policy{
   position: relative; 
+}
+.registration-policy span{
+  color: var(--text-color);
+  font-weight: 500;
+  text-decoration: underline;
+  cursor: pointer;
 }

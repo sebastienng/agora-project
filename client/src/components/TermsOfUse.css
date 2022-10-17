@@ -1,0 +1,43 @@
+.terms-container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  overflow: scroll;
+  font-size: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.terms-container button {
+  width: 19.3rem;
+  height: 3.19rem;
+  border-radius: 25.5px;
+  color: var(--text-color);
+  background: var(--button-background);
+  margin: 2rem 1rem;
+  border: 0;
+}
+.terms-content h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 1rem 1rem;
+}
+.terms-content p {
+  font-size: 2px;
+  margin: 1rem;
+}
+.terms-content ul{
+  font-size: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin: 0 1rem 0 1rem;
+}
+.terms-content {
+  font-size: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin: 0 1rem 0 1rem;
+}

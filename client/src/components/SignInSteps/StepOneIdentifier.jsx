@@ -22,8 +22,8 @@ function StepOneIdentifier({ setSteps }) {
         />
         <StepOneButton
           img={company}
-          title={"Business"}
-          description={"I’m a Talent Acquisition looking for talents"}
+          title={"Company"}
+          description={"I’m a Company looking for talents"}
           eventFn={buttonHandler}
         />
       </div>
