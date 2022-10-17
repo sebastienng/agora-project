@@ -10,11 +10,11 @@
 
   --box-shadow: rgba(50, 80, 68, 0.18);
 
-  --big-logo-font-size: 2rem; /* 36 px */
+  --big-logo-font-size: 2.25rem; /* 36 px */
   --small-logo-font-size: 2rem; /* 32 px */
 
   --title-font-size: 1.62rem; /* 26 px */
-  --text-font-size: 1.62rem; /* 22 px */
+  --text-font-size: 1.375rem; /* 22 px */
   --description-font-size: 1rem; /* 16 px */
 
   --button-font-size: 1rem; /* 15 px */
