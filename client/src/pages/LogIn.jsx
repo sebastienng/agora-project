@@ -1,76 +1,53 @@
-import React, { useState } from "react";
-import { login } from "../services/auth";
+import { useFormik } from "formik";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import * as Yup from "yup";
+import { login } from "../api";
+import useAuth from "../config/hooks/useAuth";
 import "./Signup";
-import * as PATHS from "../utils/paths";
-import * as USER_HELPERS from "../utils/userToken";
 
-export default function LogIn({ authenticate }) {
-  const [form, setForm] = useState({
-    username: "",
-    password: "",
-  });
-  const { username, password } = form;
-  const [error, setError] = useState(null);
+export default function LogIn() {
   const navigate = useNavigate();
+  const [, setAuth] = useAuth();
 
-  function handleInputChange(event) {
-    const { name, value } = event.target;
-
-    return setForm({ ...form, [name]: value });
-  }
-
-  function handleFormSubmission(event) {
-    event.preventDefault();
-    const credentials = {
-      username,
-      password,
-    };
-    login(credentials).then((res) => {
-      if (!res.status) {
-        return setError({ message: "Invalid credentials" });
-      }
-      USER_HELPERS.setUserToken(res.data.accessToken);
-      authenticate(res.data.user);
-      navigate(PATHS.HOMEPAGE);
+  const { handleSubmit, touched, errors, getFieldProps, isSubmitting } =
+    useFormik({
+      initialValues: {
+        email: null,
+        password: null,
+      },
+      validationSchema: Yup.object().shape({
+        email: Yup.string().email("Enter a valide email").required(),
+        password: Yup.string().required(),
+      }),
+      onSubmit: (values, { setSubmitting }) => {
+        setSubmitting(true);
+        login(values)
+          .then(({ data }) => setAuth(data))
+          .then(() => setSubmitting(false))
+          .finally(() => navigate("/"));
+      },
     });
-  }
 
   return (
     <div>
       <h1>Log In</h1>
-      <form onSubmit={handleFormSubmission} className="signup__form">
-        <label htmlFor="input-username">Username</label>
-        <input
-          id="input-username"
-          type="text"
-          name="username"
-          placeholder="username"
-          value={username}
-          onChange={handleInputChange}
-          required
-        />
+      <form onSubmit={handleSubmit} className="signup__form">
+        <label htmlFor="email">Email</label>
+        <input id="email" type="text" {...getFieldProps("email")} />
+        {touched.email && errors.email ? <div>{errors.email}</div> : null}
 
-        <label htmlFor="input-password">Password</label>
-        <input
-          id="input-password"
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={handleInputChange}
-          required
-          minLength="8"
-        />
+        <label htmlFor="password">Password</label>
+        <input id="password" type="password" {...getFieldProps("password")} />
+        {touched.password && errors.password ? (
+          <div>{errors.password}</div>
+        ) : null}
 
-        {error && (
-          <div className="error-block">
-            <p>There was an error submiting the form:</p>
-            <p>{error.message}</p>
-          </div>
-        )}
-
-        <button className="button__submit" type="submit">
+        <button
+          className="button__submit"
+          type="submit"
+          disabled={isSubmitting}
+        >
           Submit
         </button>
       </form>
