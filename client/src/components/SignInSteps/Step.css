@@ -11,6 +11,11 @@
   font-size: var(--title-font-size);
 }
 
+.steps-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
 .footer-form {
   display: flex;
   flex-direction: column;

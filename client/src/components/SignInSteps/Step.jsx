@@ -1,9 +1,10 @@
+import { Form, Formik } from "formik";
 import React from "react";
+import Paginations from "./Paginations";
 import "./Step.css";
 import Three from "./StepThree/Three";
 
-const Step = ({ title, currentStep }) => {
-  const paginationList = [0, 1, 2, 3, 4, 5, 6, 7];
+const Step = ({ title, currentStep, handleSteps }) => {
   function renderForm(currentStep) {
     switch (currentStep) {
       case 1:
@@ -19,27 +20,28 @@ const Step = ({ title, currentStep }) => {
     }
   }
 
+  function handleSubmit() {
+    handleSteps();
+  }
   return (
     <div className="step-container">
       <h2>{title}</h2>
-      <div className="">
-        <form className="steps-form">{renderForm(currentStep)}</form>
-      </div>
-      <div className="footer-form">
-        <button type="Submit" className="agora-button">
-          Continue
-        </button>
-        <span>Your job field isn’t listed here?</span>
-        <ul>
-          {paginationList.map((element) => {
-            if (element === currentStep - 3) {
-              return <li className="current-step"></li>;
-            } else {
-              return <li></li>;
-            }
-          })}
-        </ul>
-      </div>
+
+      <Formik>
+        <div>
+          <Form className="steps-form" onSubmit={handleSubmit}>
+            {renderForm(currentStep)}
+
+            <div className="footer-form">
+              <button type="submit" className="agora-button">
+                Continue
+              </button>
+              <span>Your job field isn’t listed here?</span>
+              <Paginations currentStep={currentStep} />
+            </div>
+          </Form>
+        </div>
+      </Formik>
     </div>
   );
 };
