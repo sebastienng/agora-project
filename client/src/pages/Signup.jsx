@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "./auth.css";
 import StepOneIdentifier from "../components/SignInSteps/StepOneIdentifier";
-import { Formik } from "formik";
-import * as Yup from "yup";
 import StepTwo from "../components/SignInSteps/StepTwo";
 // import { signup } from "../services/auth";
 // import { useNavigate } from "react-router-dom";

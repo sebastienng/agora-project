@@ -1,8 +1,10 @@
+import "./StepTwo.css";
+
 import React, { useState } from "react";
 import { Formik, Form } from "formik";
-import TermsOfUse from "../../components/TermsOfUse";
+import axios from 'axios'
 
-import "./StepTwo.css";
+import TermsOfUse from "../../components/TermsOfUse";
 import StepTwoInput from "./StepTwoInput";
 import signUpValidationShema from "../../config/signUpValidationSchema.js";
 
@@ -25,7 +27,8 @@ function StepTwo({ setSteps }) {
     //   "password": "dqscsdx",
     //   "newsLetter": true
     // }
-    // Axios.patch(data)
+
+    // axios.post(" https://alunmi-agora-backend.herokuapp.com/api/signup",data).then(id=>);
     setSteps(2);
   };
   const formFields = [
