@@ -18,6 +18,9 @@ export default function Signup({ authenticate }) {
       {/* Charlotte changed the step order(1 and 2 ) , so we have change those comoents names later */}
       {steps === 1 ? <StepTwo setSteps={setSteps} /> : null}
       {steps === 2 ? <StepOneIdentifier setSteps={setSteps} /> : null}
+      {steps === 3 ? (
+        <Step title={"What's your job category ?"} currentStep={steps} />
+      ) : null}
     </div>
   );
 }
