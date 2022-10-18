@@ -11,8 +11,6 @@ const JobCategory = ({ category, jobs }) => {
   }
   return (
     <div
-      role="group"
-      aria-labelledby=""
       className={isActive ? "job-category-box  active" : "job-category-box "}
     >
       <label>
@@ -22,6 +20,7 @@ const JobCategory = ({ category, jobs }) => {
         </div>
 
         <Field
+          name="jobChecked"
           className={
             isActive ? "job-category-input active" : "job-category-input"
           }

@@ -5,6 +5,7 @@ import "./Step.css";
 import Three from "./StepThree/Three";
 
 const Step = ({ title, currentStep, handleSteps }) => {
+  let initialValues = {};
   function renderForm(currentStep) {
     switch (currentStep) {
       case 1:
@@ -12,6 +13,9 @@ const Step = ({ title, currentStep, handleSteps }) => {
       case 2:
         return "Step 1";
       case 3:
+        initialValues = {
+          jobChecked: [],
+        };
         return <Three />;
       case 4:
         return "Step 1";
@@ -20,14 +24,26 @@ const Step = ({ title, currentStep, handleSteps }) => {
     }
   }
 
-  function handleSubmit() {
+  function handleSubmit(values) {
+    const data = JSON.stringify(values, null, 2);
+    console.log(data);
+    // data = {
+    //   "firstName": "sdcqds",
+    //   "lastName": "dcsdqc",
+    //   "email": "csdcsd@dql.com",
+    //   "password": "dqscsdx",
+    //   "newsLetter": true
+    // }
+
+    // axios.post(" https://alunmi-agora-backend.herokuapp.com/api/signup",data).then(id=>);
     handleSteps();
   }
+
   return (
     <div className="step-container">
       <h2>{title}</h2>
 
-      <Formik>
+      <Formik initialValues={initialValues}>
         <div>
           <Form className="steps-form" onSubmit={handleSubmit}>
             {renderForm(currentStep)}
