@@ -1,12 +1,15 @@
 import { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes,Navigate } from "react-router-dom";
 import { getUser } from "./api";
 import LoadingComponent from "./components/Loading";
 import useAuth from "./config/hooks/useAuth";
 import LogIn from "./pages/LogIn";
+import  HomePage from "./pages/HomePage";
+import Signup from "./pages/Signup";
 
 import "./App.css";
 import "./style/generalCssStyle.css";
+
 
 function PrivateRoute({ children }) {
   let [auth] = useAuth();
@@ -24,14 +27,16 @@ export default function App() {
       .catch(() => setAuth(false));
   }, []);
 
-  if (isLoading) {
-    return <LoadingComponent />;
-  }
+  // if (isLoading) {
+  //   return <LoadingComponent />;
+  // }
   return (
     <main>
       <div className="App">
         <Routes>
+          <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LogIn />} />
+          <Route path="/auth/signup" element={<Signup />} />
         </Routes>
       </div>
     </main>
