@@ -1,11 +1,23 @@
-import { Form, Formik } from "formik";
+import { Form, Formik, ErrorMessage } from "formik";
 import React from "react";
 import Paginations from "./Paginations";
 import "./Step.css";
 import Three from "./StepThree/Three";
+import * as Yup from "yup";
 
 const Step = ({ title, currentStep, handleSteps }) => {
-  let initialValues = {};
+  const initialValues = {
+    jobChecked: [],
+  };
+  const schemaFormValidation = Yup.object().shape({
+    jobChecked: Yup.array()
+
+      .min(1, "You need to select one job category")
+
+      .max(1, "You can only select one jon category")
+
+      .required("Required"),
+  });
   function renderForm(currentStep) {
     switch (currentStep) {
       case 1:
@@ -13,9 +25,6 @@ const Step = ({ title, currentStep, handleSteps }) => {
       case 2:
         return "Step 1";
       case 3:
-        initialValues = {
-          jobChecked: [],
-        };
         return <Three />;
       case 4:
         return "Step 1";
@@ -24,9 +33,9 @@ const Step = ({ title, currentStep, handleSteps }) => {
     }
   }
 
-  function handleSubmit(values) {
+  function onSubmit(values) {
     const data = JSON.stringify(values, null, 2);
-    console.log(data);
+    console.log(values);
     // data = {
     //   "firstName": "sdcqds",
     //   "lastName": "dcsdqc",
@@ -43,20 +52,26 @@ const Step = ({ title, currentStep, handleSteps }) => {
     <div className="step-container">
       <h2>{title}</h2>
 
-      <Formik initialValues={initialValues}>
-        <div>
-          <Form className="steps-form" onSubmit={handleSubmit}>
-            {renderForm(currentStep)}
+      <Formik
+        initialValues={initialValues}
+        validationSchema={schemaFormValidation}
+        onSubmit={onSubmit}
+      >
+        {({ errors, touched }) => (
+          <div>
+            <Form className="steps-form">
+              {renderForm(currentStep)}
 
-            <div className="footer-form">
-              <button type="submit" className="agora-button">
-                Continue
-              </button>
-              <span>Your job field isn’t listed here?</span>
-              <Paginations currentStep={currentStep} />
-            </div>
-          </Form>
-        </div>
+              <div className="footer-form">
+                <button type="submit" className="agora-button">
+                  Continue
+                </button>
+                <span>Your job field isn’t listed here?</span>
+                <Paginations currentStep={currentStep} />
+              </div>
+            </Form>
+          </div>
+        )}
       </Formik>
     </div>
   );

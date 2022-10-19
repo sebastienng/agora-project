@@ -1,9 +1,10 @@
-import { Field } from "formik";
+import { Field, ErrorMessage } from "formik";
 import React from "react";
 import { useState } from "react";
+import ToolTip from "../ToolTip";
 import "./JobCategory.css";
 
-const JobCategory = ({ category, jobs }) => {
+const JobCategory = ({ category, jobs, id }) => {
   const [isActive, setActive] = useState();
 
   function handleClick() {
@@ -20,7 +21,7 @@ const JobCategory = ({ category, jobs }) => {
         </div>
 
         <Field
-          name="jobChecked"
+          name={"jobChecked"}
           className={
             isActive ? "job-category-input active" : "job-category-input"
           }
@@ -28,6 +29,7 @@ const JobCategory = ({ category, jobs }) => {
           onClick={handleClick}
           value={category}
         />
+        <ErrorMessage component={ToolTip} name="jobChecked" />
       </label>
     </div>
   );

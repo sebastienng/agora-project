@@ -4,6 +4,7 @@ import JobCategory from "../JobCategory";
 import { jobList } from "../../../utils/jobsList";
 import { useState } from "react";
 import { Field } from "formik";
+
 const Three = () => {
   const [updatedList, setList] = useState(jobList);
 
@@ -25,10 +26,11 @@ const Three = () => {
       </div>
 
       <div className="list-job-category">
-        {updatedList.map((element, i) => {
+        {updatedList.map((element, index) => {
           return (
             <JobCategory
-              key={"job-" + i}
+              key={"job-" + index}
+              id={index}
               category={element.category}
               jobs={element.jobs}
             />
