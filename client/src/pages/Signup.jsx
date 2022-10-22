@@ -10,7 +10,7 @@ import StepThree from "../components/SignInSteps/StepThree";
 // import * as USER_HELPERS from "../utils/userToken";
 
 export default function Signup({ authenticate }) {
-  const [steps, setSteps] = useState(3);
+  const [steps, setSteps] = useState(4);
 
   const handleSteps = () => {
     setSteps(steps + 1);
