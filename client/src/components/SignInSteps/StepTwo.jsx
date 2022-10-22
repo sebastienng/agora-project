@@ -2,13 +2,13 @@ import "./StepTwo.css";
 
 import React, { useState } from "react";
 import { Formik, Form } from "formik";
-import axios from 'axios'
+import axios from "axios";
 
 import TermsOfUse from "../../components/TermsOfUse";
 import StepTwoInput from "./StepTwoInput";
 import signUpValidationShema from "../../config/signUpValidationSchema.js";
 
-function StepTwo({ setSteps }) {
+function StepTwo({ handleSteps }) {
   const [readTerms, setReadState] = useState(false);
 
   const initialValues = {
@@ -29,7 +29,7 @@ function StepTwo({ setSteps }) {
     // }
 
     // axios.post(" https://alunmi-agora-backend.herokuapp.com/api/signup",data).then(id=>);
-    setSteps(2);
+    handleSteps();
   };
   const formFields = [
     {

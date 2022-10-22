@@ -4,15 +4,14 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 1.25rem;
-  color:var(--text-color);
+  color: var(--text-color);
   font-style: normal;
   /* font-family: "Kannada Sangam MN"; */
   box-sizing: border-box;
 }
 .App {
-  /* padding: 0 2.25rem; */
+  padding: 0 2.25rem;
   background: var(--background);
-  width: 100vw;
   height: 100vh;
 }
 
