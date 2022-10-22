@@ -24,8 +24,8 @@ export default function Signup({ authenticate }) {
       {steps === 3 ? (
         <StepThree currentStep={steps} handleSteps={handleSteps} />
       ) : null}
-      ) : null}
         <Step title={"What’s your job title?"} currentStep={steps} />
+      ) : null}
     </div>
   );
 }
