@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./auth.css";
 import StepOneIdentifier from "../components/SignInSteps/StepOneIdentifier";
 import StepTwo from "../components/SignInSteps/StepTwo";
-import Step from "../components/SignInSteps/StepThree";
+import StepFour from "../components/SignInSteps/StepFour";
 import StepThree from "../components/SignInSteps/StepThree";
 // import { signup } from "../services/auth";
 // import { useNavigate } from "react-router-dom";
@@ -24,7 +24,8 @@ export default function Signup({ authenticate }) {
       {steps === 3 ? (
         <StepThree currentStep={steps} handleSteps={handleSteps} />
       ) : null}
-        <Step title={"What’s your job title?"} currentStep={steps} />
+      {steps === 4 ? (
+        <StepFour currentStep={steps} handleSteps={handleSteps} />
       ) : null}
     </div>
   );
