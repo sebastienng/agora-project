@@ -13,6 +13,9 @@
   padding: 0 2.25rem;
   background: var(--background);
   height: 100vh;
+  display: flex;
+
+  justify-content: center;
 }
 
 .agora-button {

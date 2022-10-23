@@ -1,4 +1,4 @@
-import { Form, Formik, ErrorMessage, Field } from "formik";
+import { Form, Formik, ErrorMessage, Field, FieldArray } from "formik";
 import React, { useState } from "react";
 import Paginations from "./Paginations";
 import "./StepFive.css";
@@ -9,29 +9,12 @@ const StepFive = ({ currentStep, handleSteps }) => {
   const [skillsList, setSkills] = useState([]);
   const [inputValue, setInput] = useState("");
   const initialValues = {
-    jobChecked: [],
+    userSkills: [],
   };
 
-  const schemaFormValidation = Yup.object().shape({
-    jobChecked: Yup.array()
-
-      .min(1, "You need to select one job category")
-
-      .max(1, "You can only select one jon category")
-
-      .required("Required"),
-  });
-
   function onSubmit(values) {
-    const data = JSON.stringify(values, null, 2);
+    // const data = JSON.stringify(values, null, 2);
     console.log(values);
-    // data = {
-    //   "firstName": "sdcqds",
-    //   "lastName": "dcsdqc",
-    //   "email": "csdcsd@dql.com",
-    //   "password": "dqscsdx",
-    //   "newsLetter": true
-    // }
 
     // axios.post(" https://alunmi-agora-backend.herokuapp.com/api/signup",data).then(id=>);
     handleSteps();
@@ -62,60 +45,73 @@ const StepFive = ({ currentStep, handleSteps }) => {
 
       <Formik
         initialValues={initialValues}
-        validationSchema={schemaFormValidation}
+        //  validationSchema={schemaFormValidation}
         onSubmit={onSubmit}
       >
         <Form className="steps-form">
-          <div className="form-skills">
-            <div className="search-bar">
-              <label htmlFor="search-skills">Skills</label>
-              <Field
-                placeholder="Select your skills"
-                name="search-skills"
-                onKeyDown={(event) => {
-                  if (event.key === "Enter") handleType(event);
-                }}
-                value={inputValue}
-                onChange={handleChange}
-              />
-            </div>
+          <FieldArray
+            name="userSkills"
+            render={(arrayHelpers) => (
+              <>
+                <div className="form-skills">
+                  <div className="search-bar">
+                    <label htmlFor="search-skills">Skills</label>
+                    <Field
+                      placeholder="Select your skills"
+                      name="search-skills"
+                      onKeyDown={(event) => {
+                        if (event.key === "Enter" && inputValue !== "") {
+                          handleType(event);
+                          arrayHelpers.push(event.target.value);
+                        }
+                      }}
+                      value={inputValue}
+                      onChange={handleChange}
+                    />
+                  </div>
 
-            <div className="skills-display">
-              <h3>My skills:</h3>
-              <div className="skills-list">
-                {skillsList.length > 0 ? (
-                  skillsList.map((skill, index) => {
-                    return (
-                      <div key={skill + index} className="skill-box">
-                        <span>{skill}</span>
+                  <div className="skills-display">
+                    <h3>My skills:</h3>
 
-                        <img
-                          src={CROSS}
-                          alt="delete-button"
-                          onClick={() => handleDelete(skill)}
-                        />
-                      </div>
-                    );
-                  })
-                ) : (
-                  <p>Add your skills using the search bar</p>
-                )}
-              </div>
-            </div>
+                    <div className="skills-list">
+                      {skillsList.length > 0 ? (
+                        skillsList.map((skill, index) => {
+                          return (
+                            <div
+                              key={"userSkills." + index}
+                              className="skill-box"
+                            >
+                              <span>{skill}</span>
 
-            <ErrorMessage
-              component={"div"}
-              className="error-message"
-              name="jobChecked"
-            />
-          </div>
+                              <img
+                                src={CROSS}
+                                alt="delete-button"
+                                onClick={() => handleDelete(skill)}
+                              />
+                            </div>
+                          );
+                        })
+                      ) : (
+                        <p>Add your skills using the search bar</p>
+                      )}
+                    </div>
+                  </div>
 
-          <div className="footer-form">
-            <button type="submit" className="agora-button">
-              Continue
-            </button>
-            <Paginations currentStep={currentStep} />
-          </div>
+                  <ErrorMessage
+                    component={"div"}
+                    className="error-message"
+                    name="userSkills"
+                  />
+                </div>
+                <div className="footer-form">
+                  <button type="submit" className="agora-button">
+                    Continue
+                  </button>
+                  <Paginations currentStep={currentStep} />
+                </div>
+              </>
+            )}
+          ></FieldArray>
         </Form>
       </Formik>
     </div>
