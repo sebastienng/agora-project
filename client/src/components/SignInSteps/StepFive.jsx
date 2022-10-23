@@ -111,7 +111,7 @@ const StepFive = ({ currentStep, handleSteps }) => {
                 </div>
               </>
             )}
-          ></FieldArray>
+          />
         </Form>
       </Formik>
     </div>
