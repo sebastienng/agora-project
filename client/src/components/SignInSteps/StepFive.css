@@ -31,7 +31,7 @@
   color: red;
   position: absolute;
   z-index: 5;
-  bottom: 255px;
+  top: 255px;
   right: 60px;
 }
 .search-bar label {

@@ -12,6 +12,14 @@ const StepFive = ({ currentStep, handleSteps }) => {
     userSkills: [],
   };
 
+  const schemaFormValidation = Yup.object().shape({
+    userSkills: Yup.array()
+
+      .min(3, "Please select at least 3 skills")
+
+      .required("Required"),
+  });
+
   function onSubmit(values) {
     // const data = JSON.stringify(values, null, 2);
     console.log(values);
@@ -45,7 +53,7 @@ const StepFive = ({ currentStep, handleSteps }) => {
 
       <Formik
         initialValues={initialValues}
-        //  validationSchema={schemaFormValidation}
+        validationSchema={schemaFormValidation}
         onSubmit={onSubmit}
       >
         <Form className="steps-form">
