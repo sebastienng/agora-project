@@ -2,7 +2,7 @@ import "./StepTwo.css";
 
 import React, { useState } from "react";
 import { Formik, Form } from "formik";
-import axios from "axios";
+// import axios from "axios";
 
 import TermsOfUse from "../../components/TermsOfUse";
 import StepTwoInput from "./StepTwoInput";

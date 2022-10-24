@@ -6,10 +6,8 @@ import StepFour from "../components/SignInSteps/StepFour";
 import StepFive from "../components/SignInSteps/StepFive";
 import StepSix from "../components/SignInSteps/StepSix";
 import StepThree from "../components/SignInSteps/StepThree";
-// import { signup } from "../services/auth";
-// import { useNavigate } from "react-router-dom";
-// import * as PATHS from "../utils/paths";
-// import * as USER_HELPERS from "../utils/userToken";
+import StepNine from "../components/SignInSteps/StepNine";
+
 
 export default function Signup({ authenticate }) {
   const [steps, setSteps] = useState(5);
@@ -35,6 +33,7 @@ export default function Signup({ authenticate }) {
       {steps === 6 ? (
         <StepSix currentStep={steps} handleSteps={handleSteps} />
       ) : null}
+      {steps === 9 ? <StepNine handleSteps={handleSteps} /> : null}
     </div>
   );
 }
