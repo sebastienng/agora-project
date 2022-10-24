@@ -6,7 +6,7 @@ import StepFour from "../components/SignInSteps/StepFour";
 import StepFive from "../components/SignInSteps/StepFive";
 import StepSix from "../components/SignInSteps/StepSix";
 import StepThree from "../components/SignInSteps/StepThree";
-import StepNine from "../components/SignInSteps/StepNine";
+import StepEight from "../components/SignInSteps/StepEight";
 
 
 export default function Signup({ authenticate }) {
@@ -31,6 +31,9 @@ export default function Signup({ authenticate }) {
         <StepFive currentStep={steps} handleSteps={handleSteps} />
       ) : null}
       {steps === 6 ? (
+      {steps === 8 ? (
+        <StepEight handleSteps={handleSteps} currentStep={steps} />
+      ) : null}
         <StepSix currentStep={steps} handleSteps={handleSteps} />
       ) : null}
       {steps === 9 ? <StepNine handleSteps={handleSteps} /> : null}

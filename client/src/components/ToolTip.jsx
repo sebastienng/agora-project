@@ -1,16 +1,14 @@
 import React from "react";
 
-function ToolTip({ children }) {
+function ToolTip({ children}) {
   return (
-    <span
+    <span className="ToolTip"
       style={{
-        width:'100%',
+        width: "100%",
         fontSize: "0.93rem",
         position: "absolute",
-        top: "57px",
-        left: "28px",
-        textAlign: 'left',
-        color:'red'
+        textAlign: "left",
+        color: "red",
       }}
     >
       {children}
