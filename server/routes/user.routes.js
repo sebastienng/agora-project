@@ -15,13 +15,13 @@ const userSchemaValidation = Joi.object({
   location: Joi.string(),
 });
 
-router.get("/:userId", authMiddleware, async (req, res, next) => {
+router.get("/:userId", async (req, res, next) => {
   const user = await User.findById(req.params.userId).lean();
 
   return res.json(user);
 });
 
-router.put("/:userId", authMiddleware, async (req, res, next) => {
+router.put("/:userId", async (req, res, next) => {
   const exist = await User.findById(req.params.userId).lean();
 
   if (!exist) {
