@@ -21,7 +21,7 @@ router.get("/:userId", async (req, res, next) => {
   return res.json(user);
 });
 
-router.put("/:userId", async (req, res, next) => {
+router.patch("/:userId", async (req, res, next) => {
   const exist = await User.findById(req.params.userId).lean();
 
   if (!exist) {
