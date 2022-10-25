@@ -1,0 +1,34 @@
+.personBioContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.personBioContainer h2 {
+  font-size: var(--title-font-size);
+  margin: 5.68rem 3.87rem 2.13rem 3.87rem;
+}
+.personBioContainer form {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.personBioContainer label {
+  margin-bottom: 3.93rem;
+}
+.personBioContainer textarea {
+  margin-bottom: 8.75rem;
+  width: 19.3rem;
+  height: 12rem;
+  background: var(--background);
+  overflow: scroll;
+  border: 1px solid var(--text-color);
+  border-radius: 15px;
+  outline: 0;
+  resize: none;
+  padding: 1.18rem;
+}
+.personBioContainer form .ToolTip {
+  top:18rem;
+  left:8.1rem
+}
