@@ -16,7 +16,7 @@ const userSchemaValidation = Joi.object({
 });
 
 router.get("/:userId", authMiddleware, async (req, res, next) => {
-  const user = await User.findbyId(req.params.userId).lean();
+  const user = await User.findById(req.params.userId).lean();
 
   return res.json(user);
 });
