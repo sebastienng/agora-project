@@ -22,7 +22,7 @@ router.get("/:userId", authMiddleware, async (req, res, next) => {
 });
 
 router.put("/:userId", authMiddleware, async (req, res, next) => {
-  const exist = await User.findById(userId);
+  const exist = await User.findById(req.params.userId).lean();
 
   if (!exist) {
     return res.status(400).json({ errorMessage: "User not found" });
