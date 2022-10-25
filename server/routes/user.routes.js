@@ -37,7 +37,7 @@ router.put("/:userId", authMiddleware, async (req, res, next) => {
     });
   }
 
-  const user = await User.findByIdAndUpdate(userId, req.body);
+  const user = await User.findByIdAndUpdate(req.params.userId, req.body);
 
   return res.json(user);
 });
