@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const authRoutes = require("./auth.routes");
-const authRoutes = require("./user.routes");
+const userRoutes = require("./user.routes");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
