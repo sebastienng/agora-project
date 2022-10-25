@@ -2,6 +2,7 @@ import { Form, Formik, ErrorMessage, Field, FieldArray } from "formik";
 import React, { useState } from "react";
 import Paginations from "./Paginations";
 import "./StepFive.css";
+import axios from "axios";
 import CROSS from "../../images/delete-cross.png";
 import * as Yup from "yup";
 
@@ -21,11 +22,24 @@ const StepFive = ({ currentStep, handleSteps }) => {
   });
 
   function onSubmit(values) {
-    // const data = JSON.stringify(values, null, 2);
-    console.log(values);
+    const user = localStorage.getItem("userId");
+    const config = {
+      method: "patch",
+      url: "https://alunmi-agora-backend.herokuapp.com/api/user/" + user,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: { job: { skills: values.userSkills } },
+    };
 
-    // axios.post(" https://alunmi-agora-backend.herokuapp.com/api/signup",data).then(id=>);
-    handleSteps();
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        handleSteps();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
   function handleChange(event) {
     event.preventDefault();

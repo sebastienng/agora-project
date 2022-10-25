@@ -2,7 +2,7 @@ import "./StepTwo.css";
 
 import React, { useState } from "react";
 import { Formik, Form } from "formik";
-
+import axios from "axios";
 import TermsOfUse from "../../components/TermsOfUse";
 import StepTwoInput from "./StepTwoInput";
 import signUpValidationShema from "../../config/signUpValidationSchema.js";
@@ -11,37 +11,46 @@ function StepTwo({ handleSteps }) {
   const [readTerms, setReadState] = useState(false);
 
   const initialValues = {
-    firstName: "",
-    lastName: "",
+    firstname: "",
+    lastname: "",
     email: "",
     password: "",
-    newsLetter: false,
+    // field not handled by db
+    // newsLetter: false,
   };
   const onSubmit = (values) => {
     const data = JSON.stringify(values, null, 2);
-    // data = {
-    //   "firstName": "sdcqds",
-    //   "lastName": "dcsdqc",
-    //   "email": "csdcsd@dql.com",
-    //   "password": "dqscsdx",
-    //   "newsLetter": true
-    // }
+    console.log(data);
+    const config = {
+      method: "post",
+      url: "https://alunmi-agora-backend.herokuapp.com/api/auth/signup",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
 
-    // axios.post(" https://alunmi-agora-backend.herokuapp.com/api/signup",data).then(id=>);
-    handleSteps();
+    axios(config)
+      .then(function (response) {
+        localStorage.setItem("userId", response.data._id);
+        handleSteps();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
   const formFields = [
     {
       type: "text",
-      id: "firstName",
+      id: "firstname",
       placeHolder: "First Name",
-      name: "firstName",
+      name: "firstname",
     },
     {
       type: "text",
-      id: "lastName",
+      id: "lastname",
       placeHolder: "Last Name",
-      name: "lastName",
+      name: "lastname",
     },
     {
       type: "text",

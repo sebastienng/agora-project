@@ -24,7 +24,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
+  font-weight: 500;
   background: var(--button-background);
   border-radius: 25.5px;
   width: 19.3rem;

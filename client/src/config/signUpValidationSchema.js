@@ -1,17 +1,15 @@
 import * as Yup from "yup";
 
 const signUpValidationShema = Yup.object().shape({
-  firstName: Yup.string()
+  firstname: Yup.string()
     .min(2, "Must be at least 2 characters")
     .required("Required")
     .max(15, "Must be 15 characters or less"),
-  lastName: Yup.string()
+  lastname: Yup.string()
     .min(2, "Must be at least 2 characters")
     .required("Required")
     .max(20, "Must be 20 characters or less"),
-  email: Yup.string()
-    .email("Invalid email address")
-    .required("Required"),
+  email: Yup.string().email("Invalid email address").required("Required"),
   password: Yup.string()
     .required("Required")
     .min(8, "Must be more than 8 characters")

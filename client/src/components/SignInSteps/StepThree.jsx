@@ -2,7 +2,7 @@ import { Form, Formik, ErrorMessage, Field } from "formik";
 import React, { useState } from "react";
 import Paginations from "./Paginations";
 import "./StepThree.css";
-
+import axios from "axios";
 import * as Yup from "yup";
 import { jobList } from "../../utils/jobsList";
 
@@ -22,19 +22,28 @@ const StepThree = ({ title, currentStep, handleSteps }) => {
   });
 
   function onSubmit(values) {
-    const data = JSON.stringify(values, null, 2);
-    console.log(values);
-    // data = {
-    //   "firstName": "sdcqds",
-    //   "lastName": "dcsdqc",
-    //   "email": "csdcsd@dql.com",
-    //   "password": "dqscsdx",
-    //   "newsLetter": true
-    // }
+    const data = JSON.stringify(values.jobChecked[0], null, 2);
+    const user = localStorage.getItem("userId");
 
-    // axios.post(" https://alunmi-agora-backend.herokuapp.com/api/signup",data).then(id=>);
-    handleSteps();
+    const config = {
+      method: "put",
+      url: "https://alunmi-agora-backend.herokuapp.com/api/user/" + user,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: JSON.stringify({ job: { category: values.jobChecked[0] } }),
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        handleSteps();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
+
   function handleSearch(event) {
     // event.preventDefault();
     // setList(jobList.filter((job) =>
