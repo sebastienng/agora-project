@@ -10,7 +10,7 @@ const userSchema = new Schema(
     newsLetter: Boolean,
     job: {
       category: String,
-      title: String,
+      title: [String],
       skills: [String],
       experience: String,
     },
