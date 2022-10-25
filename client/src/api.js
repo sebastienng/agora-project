@@ -14,11 +14,11 @@ function internalServerError(err) {
 }
 
 const API = axios.create({
-  baseURL: `${process.env.REACT_APP_SERVER_URL}`,
+  baseURL: `${process.env.REACT_APP_SERVER_URL}/api`,
   withCredentials: true,
 });
 
-export const getUser = () => API.get("/auth").catch(() => false);
+export const getUser = () => API.get("/auth");
 
 export const login = (credentials) =>
   API.post("/auth/login", credentials).catch(internalServerError);

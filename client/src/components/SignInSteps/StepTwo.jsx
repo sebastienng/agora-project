@@ -1,44 +1,31 @@
 import "./StepTwo.css";
 
+import { Form, Formik } from "formik";
 import React, { useState } from "react";
-import { Formik, Form } from "formik";
-import axios from "axios";
+import { signup } from "../../api";
 import TermsOfUse from "../../components/TermsOfUse";
-import StepTwoInput from "./StepTwoInput";
+import useAuth from "../../config/hooks/useAuth";
 import signUpValidationShema from "../../config/signUpValidationSchema.js";
+import StepTwoInput from "./StepTwoInput";
 
 function StepTwo({ handleSteps }) {
   const [readTerms, setReadState] = useState(false);
+  const [setAuth] = useAuth();
 
   const initialValues = {
     firstname: "",
     lastname: "",
     email: "",
     password: "",
-    // field not handled by db
-    // newsLetter: false,
+    newsLetter: false,
   };
-  const onSubmit = (values) => {
-    const data = JSON.stringify(values, null, 2);
-    console.log(data);
-    const config = {
-      method: "post",
-      url: "https://alunmi-agora-backend.herokuapp.com/api/auth/signup",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: data,
-    };
 
-    axios(config)
-      .then(function (response) {
-        localStorage.setItem("userId", response.data._id);
-        handleSteps();
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  const onSubmit = (values) => {
+    signup(values)
+      .then(({ data }) => setAuth(data))
+      .finally(handleSteps());
   };
+
   const formFields = [
     {
       type: "text",
