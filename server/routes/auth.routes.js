@@ -33,6 +33,7 @@ router.post("/signup", async (req, res) => {
       lastname: Joi.string().required(),
       email: Joi.string().email().required(),
       password: Joi.string().required(),
+      newsLetter: Joi.boolean().required(),
     }).validateAsync(req.body, { abortEarly: false });
   } catch (error) {
     return res.status(400).json({
