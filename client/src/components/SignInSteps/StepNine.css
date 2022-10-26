@@ -33,3 +33,7 @@
   top: 3.75rem;
   left: 7.5rem;
 }
+.locationContainer #country-list option{
+  width: 13.75rem;
+  height: 3rem;
+}
