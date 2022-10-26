@@ -6,7 +6,7 @@ import ToolTip from "../ToolTip";
 import './StepNine.css'
 
 export default function StepNine({ currentStep, handleSteps }) {
-  const countryExemple = ['china', 'france', 'usa']; 
+  const countryExemple = ['China', 'France', 'United States','Germany','United Kingdom','Spain','Portugal','Italy']; 
   
   const initialValues = { country: "" };
   const onSubmit = (values) => {
@@ -19,10 +19,15 @@ export default function StepNine({ currentStep, handleSteps }) {
     if (!values.country) {
       errors.country = "Required";
     }
-    console.log(values);
 
     return errors;
   };
+
+  const countryList = () => {
+    return <datalist id="country-list">
+      {countryExemple.map(ele => <option value={ele} key={ele}>{ ele}</option>)}
+    </datalist>;
+  }
   return (
     <div className="locationContainer">
       <h2>Where are you located ?</h2>
@@ -32,7 +37,11 @@ export default function StepNine({ currentStep, handleSteps }) {
         validate={validate}
       >
         <Form>
-          <Field id="country" name="country" placeholder="Country"></Field>
+          <Field id="country" name="country" placeholder="Country" list='country-list' />
+          <div>
+
+          {countryList()}
+          </div>
           <ErrorMessage component={ToolTip} name="country"></ErrorMessage>
 
           <div className="footer-form">
