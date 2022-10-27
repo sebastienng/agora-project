@@ -42,8 +42,8 @@
   color: red;
   position: absolute;
   z-index: 5;
-  bottom: 255px;
-  right: 60px;
+  top: 226px;
+    left: 480px;
 }
 .search-bar label {
   position: absolute;

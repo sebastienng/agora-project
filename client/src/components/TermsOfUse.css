@@ -1,7 +1,6 @@
 .terms-container {
   width: 100vw;
   height: 100vh;
-  position: fixed;
   overflow: scroll;
   font-size: 2px;
   display: flex;

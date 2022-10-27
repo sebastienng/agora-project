@@ -12,7 +12,7 @@ import StepNine from "../components/SignInSteps/StepNine";
 import StepTen from "../components/SignInSteps/StepTen";
 
 export default function Signup({ authenticate }) {
-  const [steps, setSteps] = useState(10);
+  const [steps, setSteps] = useState(1);
 
   const handleSteps = () => {
     setSteps(steps + 1);
