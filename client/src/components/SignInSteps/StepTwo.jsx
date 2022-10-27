@@ -10,7 +10,7 @@ import StepTwoInput from "./StepTwoInput";
 
 function StepTwo({ handleSteps }) {
   const [readTerms, setReadState] = useState(false);
-  const [setAuth] = useAuth();
+  const [, setAuth] = useAuth();
 
   const initialValues = {
     firstname: "",

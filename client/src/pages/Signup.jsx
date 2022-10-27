@@ -21,22 +21,20 @@ export default function Signup({ authenticate }) {
       {/* Charlotte changed the step order(1 and 2 ) , so we have change those comoents names later */}
       {steps === 1 ? <StepTwo handleSteps={handleSteps} /> : null}
       {steps === 2 ? <StepOneIdentifier handleSteps={handleSteps} /> : null}
-      {steps === 3 ? (
+      {steps === 3 && (
         <StepThree currentStep={steps} handleSteps={handleSteps} />
-      ) : null}
-      {steps === 4 ? (
+      )}
+      {steps === 4 && (
         <StepFour currentStep={steps} handleSteps={handleSteps} />
-      ) : null}
-      {steps === 5 ? (
+      )}
+      {steps === 5 && (
         <StepFive currentStep={steps} handleSteps={handleSteps} />
-      ) : null}
-      {steps === 6 ? (
-        <StepSix currentStep={steps} handleSteps={handleSteps} />
-      ) : null}
+      )}
+      {steps === 6 && <StepSix currentStep={steps} handleSteps={handleSteps} />}
 
-      {steps === 8 ? (
+      {steps === 8 && (
         <StepEight handleSteps={handleSteps} currentStep={steps} />
-      ) : null}
+      )}
 
       {/* {steps === 9 ? <StepNine handleSteps={handleSteps} /> : null} */}
     </div>
