@@ -10,9 +10,10 @@ import StepThree from "../components/SignInSteps/StepThree";
 import StepEight from "../components/SignInSteps/StepEight";
 import StepNine from "../components/SignInSteps/StepNine";
 import StepTen from "../components/SignInSteps/StepTen";
+import FinalStep from '../components/SignInSteps/FinalStep'
 
 export default function Signup({ authenticate }) {
-  const [steps, setSteps] = useState(1);
+  const [steps, setSteps] = useState(11);
 
   const handleSteps = () => {
     setSteps(steps + 1);
@@ -45,6 +46,9 @@ export default function Signup({ authenticate }) {
       )}
       {steps === 10 && (
         <StepTen currentStep={steps} handleSteps={handleSteps} />
+      )}
+      {steps === 11 && (
+        <FinalStep />
       )}
     </div>
   );
