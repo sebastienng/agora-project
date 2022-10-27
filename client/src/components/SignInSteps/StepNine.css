@@ -1,0 +1,39 @@
+.locationContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5.68rem;
+  text-align: center;
+}
+.locationContainer h2 {
+  color: var(--text-color);
+  font-size: var(--title-font-size);
+}
+.locationContainer form {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 4.5rem;
+  align-items: center;
+}
+.locationContainer form input {
+  margin-bottom: 20.6rem;
+  width: 13.75rem;
+  height: 3rem;
+  outline: none;
+  border: 1px solid var(--description-color);
+  border-radius: 4px;
+  padding: .8rem 0 .8rem 1rem;
+  color: var(--text-color);
+}
+.locationContainer form input::placeholder {
+  color: var(--text-color);
+  font-size: var(--description-font-size);
+}
+.locationContainer form .ToolTip {
+  top: 3.75rem;
+  left: 7.5rem;
+}
+.locationContainer #country-list option{
+  width: 13.75rem;
+  height: 3rem;
+}
