@@ -19,7 +19,7 @@ module.exports = (app) => {
       secret: "secret",
       // https://github.com/jdesboeufs/connect-mongo/blob/HEAD/MIGRATION_V4.md
       store: MongoStore.create({
-        mongoUrl: process.env.MONGODB_URI || "mongodb://localhost/back-office",
+        mongoUrl: process.env.MONGODB_URI || "mongodb://localhost/agora-db",
       }),
       cookie: {
         secure: process.env.NODE_ENV === "develop" ? false : true,
