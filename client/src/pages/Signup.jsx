@@ -38,9 +38,10 @@ export default function Signup({ authenticate }) {
       )}
       {steps === 8 && (
         <StepEight handleSteps={handleSteps} currentStep={steps} />
-      {steps === 9 ? (
+      )}
+      {steps === 9 && (
         <StepNine currentStep={steps} handleSteps={handleSteps} />
-      ) : null}
+      )}
     </div>
   );
 }
