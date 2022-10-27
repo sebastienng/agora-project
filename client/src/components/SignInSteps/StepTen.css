@@ -1,0 +1,49 @@
+.dailyRateContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dailyRateContainer h2 {
+  font-size: var(--title-font-size);
+  margin-top: 5.68rem;
+  margin-bottom: 5.12rem;
+}
+.dailyRateContainer form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.dailyRateContainer form input {
+  background: var(--background);
+  border: 1px solid var(--description-color);
+  border-radius: 25.5px;
+  width: 11.1rem;
+  height: 3.1rem;
+  outline: 0;
+  padding: 1rem;
+}
+.dailyRateContainer form input::placeholder {
+  color: var(--text-color);
+  text-align: center;
+}
+.dailyRateContainer form p {
+  width: 15rem;
+  height: 2.5rem;
+  margin-top: 10.3rem;
+  margin-bottom: 7rem;
+  text-align: center;
+}
+.dailyRateContainer form .dailrateInput button {
+  width: 1.25rem;
+  height: 1.25rem;
+  background: var(--background);
+  border: 1px var(--text-color) solid;
+  border-radius: 10px;
+  margin: 1.75rem;
+}
+.dailyRateContainer .ToolTip {
+  top: 3.81rem;
+  left: 7.43rem;
+}
