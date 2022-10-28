@@ -2,7 +2,7 @@ import { Form, Formik, ErrorMessage, Field } from "formik";
 import React from "react";
 import Paginations from "./Paginations";
 import "./StepSix.css";
-
+import axios from "axios";
 import * as Yup from "yup";
 
 const StepThree = ({ currentStep, handleSteps }) => {
@@ -21,18 +21,24 @@ const StepThree = ({ currentStep, handleSteps }) => {
   });
 
   function onSubmit(values) {
-    const data = JSON.stringify(values, null, 2);
-    console.log(values);
-    // data = {
-    //   "firstName": "sdcqds",
-    //   "lastName": "dcsdqc",
-    //   "email": "csdcsd@dql.com",
-    //   "password": "dqscsdx",
-    //   "newsLetter": true
-    // }
+    const user = localStorage.getItem("userId");
+    const config = {
+      method: "patch",
+      url: "https://alunmi-agora-backend.herokuapp.com/api/user/" + user,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: { job: { experience: values.yearsExperience } },
+    };
 
-    // axios.post(" https://alunmi-agora-backend.herokuapp.com/api/signup",data).then(id=>);
-    handleSteps();
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        handleSteps();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   return (

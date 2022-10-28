@@ -2,7 +2,7 @@ import { Form, Formik, ErrorMessage, Field } from "formik";
 import React, { useState } from "react";
 import Paginations from "./Paginations";
 import "./StepFour.css";
-
+import axios from "axios";
 import * as Yup from "yup";
 import { jobList } from "../../utils/jobsList";
 
@@ -20,13 +20,28 @@ const StepThree = ({ title, currentStep, handleSteps }) => {
   });
 
   function onSubmit(values) {
-    const data = JSON.stringify(values, null, 2);
-    console.log(values);
+    const data = JSON.stringify(values.jobTitleChecked, null, 2);
+    const user = localStorage.getItem("userId");
 
-    handleSteps();
+    const config = {
+      method: "patch",
+      url: "https://alunmi-agora-backend.herokuapp.com/api/user/" + user,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: { job: { title: data } },
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        handleSteps();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
-  console.log(jobList);
   return (
     <div className="step-container">
       <h2>What's your job title ?</h2>

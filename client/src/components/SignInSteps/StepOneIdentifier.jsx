@@ -2,12 +2,34 @@ import "./StepOneIdentifier.css";
 import StepOneButton from "./StepOneButton";
 import freelance from "../../images/freelance.svg";
 import company from "../../images/company.svg";
+import axios from "axios";
 
 function StepOneIdentifier({ handleSteps }) {
   const buttonHandler = (title) => {
-    const type = title.toUpperCase();
+    const type = title;
+
+    const user = localStorage.getItem("userId");
+
+    const config = {
+      method: "put",
+      url: "https://alunmi-agora-backend.herokuapp.com/api/user/" + user,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      type: type,
+    };
+    console.log(config);
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        handleSteps();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
     // Axios.patch(type)
-    handleSteps();
   };
 
   return (

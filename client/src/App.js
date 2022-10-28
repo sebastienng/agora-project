@@ -1,15 +1,13 @@
 import { useEffect } from "react";
-import { Route, Routes,Navigate } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { getUser } from "./api";
-import LoadingComponent from "./components/Loading";
 import useAuth from "./config/hooks/useAuth";
+import HomePage from "./pages/HomePage";
 import LogIn from "./pages/LogIn";
-import  HomePage from "./pages/HomePage";
 import Signup from "./pages/Signup";
 
 import "./App.css";
 import "./style/generalCssStyle.css";
-
 
 function PrivateRoute({ children }) {
   let [auth] = useAuth();
@@ -18,7 +16,7 @@ function PrivateRoute({ children }) {
 }
 
 export default function App() {
-  let [auth, setAuth] = useAuth();
+  let [, setAuth] = useAuth();
 
   // Check if user has an active session on the server
   useEffect(() => {

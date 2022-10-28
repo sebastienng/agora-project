@@ -12,7 +12,7 @@ const generatePassword = async (userPassword) => {
 
 router.get("/", async (req, res) => {
   if (req.user) {
-    return res.json(user);
+    return res.json(req.user);
   } else {
     return res.status(400).json({ errorMessage: "User is not authentified." });
   }

@@ -19,7 +19,7 @@ module.exports = (app) => {
       secret: "secret",
       // https://github.com/jdesboeufs/connect-mongo/blob/HEAD/MIGRATION_V4.md
       store: MongoStore.create({
-        mongoUrl: process.env.MONGODB_URI || "mongodb://localhost/agora-db",
+        mongoUrl: process.env.MONGODB_URI,
       }),
       cookie: {
         secure: process.env.NODE_ENV === "develop" ? false : true,
@@ -45,7 +45,7 @@ module.exports = (app) => {
   app.use(
     cors({
       credentials: true,
-      origin: process.env.ORIGIN || "http://localhost:5005",
+      origin: process.env.URL_FRONT,
     })
   );
 

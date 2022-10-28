@@ -1,18 +1,20 @@
 import React, { useState } from "react";
-import "./auth.css";
-import StepOneIdentifier from "../components/SignInSteps/StepOneIdentifier";
-import StepTwo from "../components/SignInSteps/StepTwo";
-import StepFour from "../components/SignInSteps/StepFour";
-import StepFive from "../components/SignInSteps/StepFive";
-import StepSix from "../components/SignInSteps/StepSix";
-import StepSeven from "../components/SignInSteps/StepSeven";
-import StepThree from "../components/SignInSteps/StepThree";
 import StepEight from "../components/SignInSteps/StepEight";
+import StepFive from "../components/SignInSteps/StepFive";
+import StepFour from "../components/SignInSteps/StepFour";
+import StepOneIdentifier from "../components/SignInSteps/StepOneIdentifier";
+import StepSeven from "../components/SignInSteps/StepSeven";
+import StepSix from "../components/SignInSteps/StepSix";
+import StepThree from "../components/SignInSteps/StepThree";
+
 import StepNine from "../components/SignInSteps/StepNine";
 import StepTen from "../components/SignInSteps/StepTen";
+import StepTwo from "../components/SignInSteps/StepTwo";
+
+import "./auth.css";
 
 export default function Signup({ authenticate }) {
-  const [steps, setSteps] = useState(10);
+  const [steps, setSteps] = useState(1);
 
   const handleSteps = () => {
     setSteps(steps + 1);
@@ -29,7 +31,6 @@ export default function Signup({ authenticate }) {
       {steps === 4 && (
         <StepFour currentStep={steps} handleSteps={handleSteps} />
       )}
-
       {steps === 5 && (
         <StepFive currentStep={steps} handleSteps={handleSteps} />
       )}
