@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import "./auth.css";
-import StepOneIdentifier from "../components/SignInSteps/StepOneIdentifier";
-import StepTwo from "../components/SignInSteps/StepTwo";
-import StepFour from "../components/SignInSteps/StepFour";
+import StepEight from "../components/SignInSteps/StepEight";
 import StepFive from "../components/SignInSteps/StepFive";
+import StepFour from "../components/SignInSteps/StepFour";
+import StepOneIdentifier from "../components/SignInSteps/StepOneIdentifier";
 import StepSix from "../components/SignInSteps/StepSix";
 import StepThree from "../components/SignInSteps/StepThree";
-import StepEight from "../components/SignInSteps/StepEight";
-// import StepNine from "../components/SignInSteps/StepNine";
+import StepTwo from "../components/SignInSteps/StepTwo";
+import "./auth.css";
 
 export default function Signup({ authenticate }) {
   const [steps, setSteps] = useState(1);
@@ -19,8 +18,8 @@ export default function Signup({ authenticate }) {
   return (
     <div>
       {/* Charlotte changed the step order(1 and 2 ) , so we have change those comoents names later */}
-      {steps === 1 ? <StepTwo handleSteps={handleSteps} /> : null}
-      {steps === 2 ? <StepOneIdentifier handleSteps={handleSteps} /> : null}
+      {steps === 1 && <StepTwo handleSteps={handleSteps} />}
+      {steps === 2 && <StepOneIdentifier handleSteps={handleSteps} />}
       {steps === 3 && (
         <StepThree currentStep={steps} handleSteps={handleSteps} />
       )}
@@ -35,8 +34,6 @@ export default function Signup({ authenticate }) {
       {steps === 8 && (
         <StepEight handleSteps={handleSteps} currentStep={steps} />
       )}
-
-      {/* {steps === 9 ? <StepNine handleSteps={handleSteps} /> : null} */}
     </div>
   );
 }
