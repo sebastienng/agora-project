@@ -21,7 +21,7 @@
   width: 19.3rem;
   height: 12rem;
   background: var(--background);
-  overflow: scroll;
+  overflow: hidden;
   border: 1px solid var(--text-color);
   border-radius: 15px;
   outline: 0;

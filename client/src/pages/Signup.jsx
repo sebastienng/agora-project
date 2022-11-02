@@ -10,6 +10,7 @@ import StepThree from "../components/SignInSteps/StepThree";
 import StepNine from "../components/SignInSteps/StepNine";
 import StepTen from "../components/SignInSteps/StepTen";
 import StepTwo from "../components/SignInSteps/StepTwo";
+import FinalStep from '../components/SignInSteps/FinalStep'
 
 import "./auth.css";
 
@@ -46,6 +47,9 @@ export default function Signup({ authenticate }) {
       )}
       {steps === 10 && (
         <StepTen currentStep={steps} handleSteps={handleSteps} />
+      )}
+      {steps === 11 && (
+        <FinalStep />
       )}
     </div>
   );
