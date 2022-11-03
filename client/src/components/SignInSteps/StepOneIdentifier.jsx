@@ -6,6 +6,7 @@ import axios from "axios";
 
 function StepOneIdentifier({ handleSteps }) {
   const buttonHandler = (title) => {
+    handleSteps();
     const type = title;
 
     const user = localStorage.getItem("userId");

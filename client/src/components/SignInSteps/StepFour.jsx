@@ -20,6 +20,8 @@ const StepThree = ({ title, currentStep, handleSteps }) => {
   });
 
   function onSubmit(values) {
+        handleSteps();
+
     const data = JSON.stringify(values.jobTitleChecked, null, 2);
     const user = localStorage.getItem("userId");
 
@@ -35,7 +37,6 @@ const StepThree = ({ title, currentStep, handleSteps }) => {
     axios(config)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
-        handleSteps();
       })
       .catch(function (error) {
         console.log(error);

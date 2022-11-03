@@ -21,6 +21,8 @@ const StepThree = ({ currentStep, handleSteps }) => {
   });
 
   function onSubmit(values) {
+        handleSteps();
+
     const user = localStorage.getItem("userId");
     const config = {
       method: "patch",
@@ -34,7 +36,7 @@ const StepThree = ({ currentStep, handleSteps }) => {
     axios(config)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
-        handleSteps();
+
       })
       .catch(function (error) {
         console.log(error);
